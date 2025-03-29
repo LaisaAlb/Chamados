@@ -10,14 +10,13 @@ export default function SingIn(){
 const [ email, setEmail ] = useState('');
 const [password, setPassword] = useState('');
 
-const { singIn } = useContext(AuthContext);
+const { singIn, loadingAuth } = useContext(AuthContext);
 
-function handleSubmit(e){
+async function handleSubmit(e){
     e.preventDefault();
     if( email !== '' && password !== ''){
-        singIn(email, password);
+        await singIn(email, password);
     }
-    alert('teste')
 }
 
     return(
@@ -43,10 +42,8 @@ function handleSubmit(e){
                         onChange={(e) => setPassword(e.target.value)}
                     />
                     
-                    <button
-                        type="submit" 
-                        value="Acessar" 
-                        >Acessar 
+                    <button type="submit">
+                        {loadingAuth ? 'Carregando...' : 'Acessar'}
                     </button>
                 </form>
 
