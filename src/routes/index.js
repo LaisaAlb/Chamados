@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 
 import SingIn from '../pages/SingIn'
-import SingUp from '../pages/SingUp'
+import SingUp from '../pages/SingnUp'
 
 function RoutesApp(){
     return(
