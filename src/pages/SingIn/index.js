@@ -1,13 +1,24 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import logo from '../../assets/logo.png'
 
 import './signin.css'
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/auth'
 
 export default function SingIn(){
 
 const [ email, setEmail ] = useState('');
 const [password, setPassword] = useState('');
+
+const { singIn } = useContext(AuthContext);
+
+function handleSubmit(e){
+    e.preventDefault();
+    if( email !== '' && password !== ''){
+        singIn(email, password);
+    }
+    alert('teste')
+}
 
     return(
         <div className="container-center">
@@ -16,7 +27,7 @@ const [password, setPassword] = useState('');
                     <img src={logo} alt="Logo do sistem de ConsultaOS"/>
                 </div>
 
-                <form>
+                <form onSubmit={handleSubmit}>
                     <h1>Entrar</h1>
                     <input 
                         type="text" 

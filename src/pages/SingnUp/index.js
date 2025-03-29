@@ -1,14 +1,25 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import logo from '../../assets/logo.png'
 
 import './singnup.css'
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/auth';
 
 export default function SingUp(){
 
 const [ name, setName ] = useState('');
 const [ email, setEmail ] = useState('');
-const [password, setPassword] = useState('');
+const [ password, setPassword ] = useState('');
+
+const { singUp, loadingAuth } = useContext(AuthContext)
+
+async function handleSubmit(event){
+    event.preventDefault();
+
+    if(name !== '' && email !== '' && password !== ''){
+        await singUp(email, password, name)
+    }
+}
 
     return(
         <div className="container-center">
@@ -17,8 +28,8 @@ const [password, setPassword] = useState('');
                     <img src={logo} alt="Logo do sistem de ConsultaOS"/>
                 </div>
 
-                <form>
-                    <h1>Cdastrar Nova Conta</h1>
+                <form onSubmit={handleSubmit}>
+                    <h1>Cadastrar Nova Conta</h1>
                     <input 
                         type="text" 
                         placeholder="Name" 
@@ -40,10 +51,8 @@ const [password, setPassword] = useState('');
                         onChange={(e) => setPassword(e.target.value)}
                     />
                     
-                    <button
-                        type="submit" 
-                        value="Acessar" 
-                        >Cadastrar 
+                    <button type="submit">
+                        {loadingAuth ? 'Carregando...' : 'Cadastrar'}
                     </button>
                 </form>
 
