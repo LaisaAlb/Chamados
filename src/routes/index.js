@@ -4,6 +4,7 @@ import SingIn from '../pages/SingIn';
 import SingUp from '../pages/SingnUp';
 import Dashboard from '../pages/Dashboard';
 import Profile from '../pages/Profile/index';
+import Customers from "../pages/Customers";
 
 import Private from './Private'
 
@@ -14,6 +15,7 @@ function RoutesApp(){
             <Route path="/register" element={<SingUp/>} />
             <Route path="/dashboard" element={<Private><Dashboard/></Private>} />
             <Route path="/profile" element={<Private><Profile/></Private>} />
+            <Route path="/costumers" element={<Private><Customers/></Private>} />
         </Routes>
     )
 }

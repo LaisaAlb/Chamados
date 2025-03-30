@@ -21,7 +21,7 @@ export default function Header(){
                 Chamados
            </Link> 
 
-           <Link to="/customers">
+           <Link to="/costumers">
                 <FiUser color='#FFF' size={24}></FiUser>
                 Clientes
            </Link> 

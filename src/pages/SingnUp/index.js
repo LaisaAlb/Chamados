@@ -1,7 +1,6 @@
 import { useContext, useState } from 'react'
 import logo from '../../assets/logo.png'
 
-import './singnup.css'
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/auth';
 
